@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Post;
+use App\Models\User;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -54,12 +58,12 @@ class Comment extends Model
     }
 
     /**
-     * Summary of comments
      * Relación: Un comentario pertenece a un post.
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment, Comment>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Post, Comment>
      */
-    public function comments()
+    public function post(): BelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Post::class);
     }
+
 }

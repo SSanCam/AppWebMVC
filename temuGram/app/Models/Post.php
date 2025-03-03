@@ -31,6 +31,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'description',
+        'image',
         'publish_date',
         'n_likes',
         'user_id'

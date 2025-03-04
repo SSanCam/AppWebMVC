@@ -5,21 +5,26 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PostController::class, 'index']);
+// Rutas de Autenticación
+Route::get('/register', [UserController::class, 'showRegister'])->name('register.show');
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::get('/login', [UserController::class, 'loginForm'])->name('login.show');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-// Autenticación de usuarios
-Route::get('/register', [UserController::class, 'registerForm']);
-Route::post('/register', [UserController::class, 'register']);
+// Rutas de Posts
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update')->middleware('auth');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
 
-Route::get('/login', [UserController::class, 'loginForm']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
+// Rutas de Likes
+Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like')->middleware('auth');
+Route::post('/posts/{post}/unlike', [PostController::class, 'unlike'])->name('posts.unlike')->middleware('auth');
 
-// Gestión de posts
-Route::get('/post/create', [PostController::class, 'create'])->middleware('auth');
-Route::post('/post', [PostController::class, 'store'])->middleware('auth');
-Route::get('/post/{post}', [PostController::class, 'show']);
-Route::delete('/post/{post}', [PostController::class, 'destroy'])->middleware('auth');
-
-// Comentarios
-Route::post('/post/{post}/comment', [CommentController::class, 'store'])->middleware('auth');
+// Rutas de Comentarios
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
+Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware('auth');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');

@@ -1,0 +1,116 @@
+/* Contenedor principal del post */
+.post-detail-container {
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título del post */
+.post-title {
+    font-size: 32px;
+    font-family: 'Dancing Script', cursive;
+    color: #962fbf;
+    margin-bottom: 20px;
+}
+
+/* Imagen del post */
+.post-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Descripción del post */
+.post-description {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Información adicional del post */
+.post-info {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Contador de likes */
+.post-info strong {
+    color: #962fbf;
+}
+
+/* Enlace de eliminación */
+.delete-link {
+    color: red;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Comentarios */
+.comments-section {
+    font-size: 20px;
+    color: #962fbf;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de los comentarios */
+.comment {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #000; /* Cambiar el color del texto de los comentarios a negro */
+}
+
+/* Formulario de comentarios */
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #962fbf;
+    margin-bottom: 15px;
+    resize: none;
+}
+
+.comment-button {
+    background: #962fbf;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-button:hover {
+    background: #4f5bd5;
+}
+
+/* Enlace para volver a los posts */
+.back-link {
+    color: #962fbf;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

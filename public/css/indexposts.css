@@ -1,0 +1,119 @@
+/* Estilo general para la página de posts */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.post {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.post-card {
+    border: 2px solid rgba(79, 91, 213, 0.5);
+    background-color: rgba(79, 91, 213, 0.2);
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.post h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #962fbf;
+    margin-bottom: 10px;
+}
+
+.post p {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.post strong {
+    font-weight: bold;
+}
+
+/* Estilo para los títulos */
+h1 {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 50px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.posts-list p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    color: #962fbf;
+    text-align: center;
+}
+
+footer {
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+/* Estilo para los botones */
+.nav__button {
+    background: #962fbf;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav__button:hover {
+    background: #4f5bd5;
+}
+
+a {
+    color: #ffffff;
+}
+
+/* Información adicional del post */
+.info-post {
+    background-color: rgba(79, 91, 213, 0.5);
+    border-radius: 15px;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    /* Descripción del post */
+    .post-description {
+        font-size: 20px;
+        /* Cambié el tamaño de la fuente a 18px */
+        color: #000000;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo de los contadores de likes y comentarios */
+    .publicado-por {
+        font-size: 15px;
+        color: #ffffff;
+        font-weight: bold;
+    }
+}

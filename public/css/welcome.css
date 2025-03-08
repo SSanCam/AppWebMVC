@@ -1,0 +1,11 @@
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Cambiar a columna */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding general */
+    text-align: center;
+    margin-top: 20%; /* Espacio debajo del header (20%) */
+    gap: 20px; /* Espacio entre los elementos */
+}

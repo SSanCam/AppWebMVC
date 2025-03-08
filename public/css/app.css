@@ -1,0 +1,126 @@
+/* Fuentes importadas */
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+/* Eliminar la barra de desplazamiento */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Estilos generales para el cuerpo */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    color: #ffffff;
+    font-family: 'Dancing Script', cursive; /* Usar la fuente importada */
+}
+
+/* Header ocupa el 20% de la altura */
+header {
+    height: 10%;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+/* Estilos para el logo en el header */
+.header__logo {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    border: 30px solid #ffffff;
+}
+
+.header__icon {
+    height: 50px;
+    width: auto;
+    display: block;
+    border-radius: 15%;
+    border-color: #bfd0d6;
+}
+
+/* Estilos para la navegación */
+.header__nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    margin-right: 40px;
+}
+
+/* Botones de navegación */
+.nav__button {
+    text-decoration: none;
+    height: 30px;
+    margin-top: 40px;
+    padding: 8px 10px;
+    margin-top: px;
+    font-size: 20px;
+    border-radius: 15px;
+    color: white;
+    background: #962fbf;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.nav__button:hover {
+    background: #4f5bd5;
+}
+
+/* Main ocupa el resto del espacio y centra los elementos */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding general */
+    text-align: center;
+    margin-top: 20%; /* Espacio debajo del header (20%) */
+    h1 {
+        font-size: 80px;
+        font-family: 'Dancing Script', cursive;
+        color: #ffffff;
+    }
+    h2 {
+        font-size: 70px;
+        font-family: 'Dancing Script', cursive;
+        color: #ffffff;
+    }
+}
+
+/* Footer */
+footer {
+    height: 10%;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    position: relative;
+    text-decoration: none;
+
+}

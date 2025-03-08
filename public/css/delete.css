@@ -1,0 +1,73 @@
+/* Estilos específicos para la confirmación de eliminación */
+.confirm-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirm-title {
+    text-align: center;
+    font-size: 24px;
+    color: #962fbf;
+    margin-bottom: 20px;
+}
+
+.confirm-message {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #962fbf;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-button {
+    width: 48%;
+    padding: 12px;
+    background-color: #962fbf;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.confirm-button:hover {
+    background-color: #4f5bd5;
+}
+
+.cancel-button {
+    width: 48%;
+    padding: 12px;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.cancel-button:hover {
+    background-color: #f5c6cb;
+}

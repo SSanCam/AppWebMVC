@@ -10,7 +10,8 @@
 }
 
 /* Estilos generales para el cuerpo */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -21,7 +22,8 @@ html, body {
     background-repeat: no-repeat;
     background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
     color: #ffffff;
-    font-family: 'Dancing Script', cursive; /* Usar la fuente importada */
+    font-family: 'Dancing Script', cursive;
+    /* Usar la fuente importada */
 }
 
 /* Header ocupa el 20% de la altura */
@@ -40,6 +42,8 @@ header {
     width: 100%;
     z-index: 1000;
     padding: 0 20px;
+    margin-top: 0;
+    /* Evita que se solape */
 }
 
 /* Estilos para el logo en el header */
@@ -48,7 +52,7 @@ header {
     align-items: center;
     background-color: white;
     border-radius: 50%;
-    border: 30px solid #ffffff;
+    border: 15px solid #ffffff;
 }
 
 .header__icon {
@@ -71,7 +75,7 @@ header {
 .nav__button {
     text-decoration: none;
     height: 30px;
-    margin-top: 40px;
+    margin-top: 10px;
     padding: 8px 10px;
     margin-top: px;
     font-size: 20px;
@@ -93,14 +97,18 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Padding general */
+    padding: 20px;
+    /* Padding general */
     text-align: center;
-    margin-top: 20%; /* Espacio debajo del header (20%) */
+    margin-top: 5%;
+
+    /* Espacio debajo del header (20%) */
     h1 {
         font-size: 80px;
         font-family: 'Dancing Script', cursive;
         color: #ffffff;
     }
+
     h2 {
         font-size: 70px;
         font-family: 'Dancing Script', cursive;
@@ -122,5 +130,63 @@ footer {
     font-weight: bold;
     position: relative;
     text-decoration: none;
+}
 
+/* Ajustes de diseño para pantallas pequeñas */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: center;
+        height: 20%;
+    }
+
+    .header__logo {
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .header__icon {
+        height: 40px;
+    }
+
+    .header__nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav__button {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+}
+
+/* Para pantallas más pequeñas aún */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: center;
+        height: 20%;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .header__logo {
+        border: 20px solid #ffffff;
+    }
+
+    .header__icon {
+        height: 30px;
+    }
+
+    .nav__button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
 }

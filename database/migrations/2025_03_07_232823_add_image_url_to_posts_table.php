@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Agregar la columna image_url a la tabla de posts
         Schema::table('posts', function (Blueprint $table) {
             $table->string('image_url')->nullable()->after('description');
         });

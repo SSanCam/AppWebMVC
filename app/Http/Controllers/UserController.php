@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Maneja el registro de un nuevo usuario.
+     * Muestra la vista de inicio de sesión.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function register(Request $request)
     {
@@ -51,41 +53,51 @@ class UserController extends Controller
             'password.regex' => 'La contraseña debe contener al menos una mayúscula, un número y un carácter especial.',
         ]);
 
+        // Si la validación falla, redirige al formulario de registro con los errores
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Crea un nuevo usuario
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
+        // Inicia sesión con el nuevo usuario
         Auth::login($user);
         return redirect('/posts')->with('success', 'Registro exitoso. Bienvenido.');
     }
 
     /**
-     * Maneja la autenticación de usuarios.
+     * Inicia sesión con las credenciales proporcionadas.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
+        // Valida las credenciales
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
+        // Intenta autenticar al usuario
         $remember = $request->has('remember');
 
+        // Si las credenciales son correctas, redirige al usuario a la página de inicio
         if (Auth::attempt($credentials, $remember)) {
             return redirect('/posts')->with('success', 'Bienvenido.');
         }
-
+        // Si las credenciales son incorrectas, redirige al usuario al formulario de inicio de sesión con un mensaje de error
         return back()->withErrors(['email' => 'Las credenciales no son correctas.']);
     }
 
     /**
      * Cierra la sesión del usuario.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)
     {
@@ -99,6 +111,7 @@ class UserController extends Controller
 
     /**
      * Muestra la vista de confirmación de eliminación de cuenta.
+     * @return \Illuminate\Contracts\View\View
      */
     public function confirmDelete(): View
     {
@@ -107,11 +120,13 @@ class UserController extends Controller
 
 
     /**
-     * Elimina un usuario después de confirmar la contraseña.
+     * Elimina la cuenta de un usuario.
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $user = User::findOrFail( $id );
+        $user = User::findOrFail($id);
 
 
         Auth::logout(); // Cierra la sesión
@@ -122,14 +137,16 @@ class UserController extends Controller
 
 
     /**
-     * Muestra el perfil de un usuario y sus posts.
+     * Muestra el perfil de un usuario.
+     * @param mixed $id
+     * @return \Illuminate\Contracts\View\View
      */
     public function profile($id): View
     {
         if (Auth::id() !== $id) {
             abort(403, 'No tienes permiso para eliminar esta cuenta.');
         }
-        
+
         $user = User::findOrFail($id);
         $posts = $user->posts()->orderBy("created_at", "desc")->get();
         return view("user.profile", compact("user", "posts"));

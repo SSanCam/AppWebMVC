@@ -12,4 +12,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/posts/{id}', [PostController::class, 'update'])->name('post.update');
     Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('post.like');
     Route::post('/posts/{id}/comment', [PostController::class, 'addComment'])->name('post.create_comment');    
+    Route::get('/posts/images/{filename}', [PostController::class, 'showImage']);
 });

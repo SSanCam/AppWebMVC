@@ -74,7 +74,7 @@
     margin-bottom: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #000; /* Cambiar el color del texto de los comentarios a negro */
+    color: #000; 
 }
 
 /* Formulario de comentarios */
@@ -88,7 +88,8 @@
     resize: none;
 }
 
-.comment-button {
+/* Botones de eliminar (post y comentario) */
+.delete-button, .delete-comment-button, .comment-button {
     background: #962fbf;
     color: white;
     padding: 10px 20px;
@@ -96,11 +97,14 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center; 
+    border: none; 
 }
 
-.comment-button:hover {
+.delete-button:hover, .delete-comment-button:hover, .delete-button:hover {
     background: #4f5bd5;
 }
+
 
 /* Enlace para volver a los posts */
 .back-link {

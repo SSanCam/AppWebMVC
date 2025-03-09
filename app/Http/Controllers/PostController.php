@@ -10,7 +10,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Controlador de publicaciones (post).
+ * Controlador para los post.
  */
 class PostController extends Controller
 {
@@ -24,11 +24,9 @@ class PostController extends Controller
         return view("post.index", compact("posts"));
     }
 
-
-
     /**
-     * Almacena un nuevo post.
-     * @param Request $request
+     * Muestra la vista para editar un post.
+     * @param \Illuminate\Http\Request $request
      * @return RedirectResponse
      */
     public function store(Request $request): RedirectResponse
@@ -36,21 +34,21 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|min:3|max:255',
             'description' => 'required|string|min:10',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Corregir aquí
         ]);
 
-        // Se verifica si se ha cargado la imagen 
-        $defaultImage = null;
+        // Se verifica si se ha cargado la imagen
+        $defaultimage_url = null;
 
-        if ($request->hasFile('image')) {
-            $defaultImage = $request->file('image')->store('img', 'public');
+        if ($request->hasFile('image_url')) {
+            $defaultimage_url = $request->file('image_url')->store('img', 'public');
         }
 
         // Se crea el post
         Post::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
-            'image' => $defaultImage,
+            'image_url' => $defaultimage_url, // Corregir aquí
             'user_id' => Auth::id(),
         ]);
 
@@ -59,9 +57,9 @@ class PostController extends Controller
     }
 
     /**
-     * Actualiza un post existente.
-     * @param Request $request
-     * @param int $id
+     * Muestra la vista para editar un post.
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
      * @return RedirectResponse
      */
     public function update(Request $request, $id): RedirectResponse
@@ -75,19 +73,19 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|min:3|max:255',
             'description' => 'required|string|min:10',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|image_url|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Si hay una nueva imagen, se actualiza
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('img', 'public');
-            $post->image = $imagePath;
+        // Si hay una nueva image_url, se actualiza
+        if ($request->hasFile('image_url')) {
+            $image_urlPath = $request->file('image_url')->store('img', 'public');
+            $post->image_url = $image_urlPath;
         }
 
         $post->update([
             'title' => $validated['title'],
             'description' => $validated['description'],
-            'image' => $post->image,
+            'image_url' => $post->image_url,
         ]);
 
         return redirect()->route('post.index')->with('success', 'Post actualizado correctamente.');
@@ -95,13 +93,18 @@ class PostController extends Controller
 
     /**
      * Elimina un post.
-     * @param int $id
-     * @return RedirectResponse
+     * @param mixed $id
+     * @return mixed|RedirectResponse
      */
     public function destroy($id)
     {
         // Buscar el post por el ID
         $post = Post::findOrFail($id);
+
+        // Eliminar la imagen si existe
+        if ($post->image_url && Storage::exists('public/' . $post->image_url)) {
+            Storage::delete('public/' . $post->image_url);
+        }
 
         // Eliminar el post de la base de datos
         $post->delete();
@@ -148,7 +151,7 @@ class PostController extends Controller
     }
 
     /**
-     * Agrega un comentario a un post.
+     * Añade un comentario a un post.
      * @param \Illuminate\Http\Request $request
      * @param mixed $id
      * @return mixed|RedirectResponse
@@ -170,4 +173,22 @@ class PostController extends Controller
 
         return redirect()->route('post.show', $post->id);
     }
+
+    /**
+     * Muestra la imagen de un post.
+     * @param mixed $filename
+     * @return mixed|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function showImage($filename)
+    {
+        // Ruta completa del archivo en el servidor
+        $path = storage_path('resources/' . $filename);
+
+        if (file_exists($path)) {
+            return response()->file($path);
+        }
+
+        abort(404);
+    }
+
 }

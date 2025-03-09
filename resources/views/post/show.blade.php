@@ -5,22 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $post->title }} - TemuGram</title>
+    <!-- Agregar estilos -->
     <link rel="stylesheet" href="{{ asset('css/app.css?v=' . time()) }}">
     <link rel="stylesheet" href="{{ asset('css/show.css?v=' . time()) }}">
 
 </head>
 
 <body>
-    @include('partials.header')
+    <!-- Header -->
+    <header>
+        @include('partials.header')
+    </header>
 
+    <!-- Main -->
     <main>
         <div class="post-detail-container">
             <h2 class="post-title">{{ $post->title }}</h2>
 
             <!-- Imagen del post -->
-            @if ($post->image)
+            @if ($post->image_url)
                 <div class="post-image">
-                    <img src="{{ Storage::url($post->image) }}" alt="Imagen del post" class="post-img">
+                    <img src="{{ asset('storage/' . $post->image_url) }}" alt="Imagen del post" class="post-img">
                 </div>
             @endif
 
@@ -60,7 +65,6 @@
                 </div>
             @endforeach
 
-
             <!-- Formulario para agregar un comentario -->
             <h3 class="comments-section">Agregar Comentario:</h3>
             <form action="{{ route('post.create_comment', $post->id) }}" method="POST" class="comment-form">
@@ -73,6 +77,7 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         @include('partials.footer')
     </footer>

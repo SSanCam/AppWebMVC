@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
+
 <body>
 
     <!-- Header -->
@@ -27,7 +29,8 @@
 
                     <div class="confirm-actions">
                         <button type="submit" class="confirm-button">Eliminar cuenta</button>
-                        <a href="{{ route('user.profile', Auth::user()->id) }}" class="cancel-button">Cancelar</a>
+                        <a href="{{ route('post.index') }}" class="nav__button">Cancelar</a>
+
                     </div>
                 </form>
             </div>
@@ -38,6 +41,7 @@
     <footer>
         @include('partials.footer')
     </footer>
-    
+
 </body>
+
 </html>

@@ -110,7 +110,4 @@ class CommentController extends Controller
         return redirect()->route('post.show', ['id' => $comment->post_id])->with('success', 'Comentario eliminado.');
     }
 
-
-
-
 }

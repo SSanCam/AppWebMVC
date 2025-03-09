@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TemuGram</title>
+    <!-- Agregar estilos -->
     <link rel="stylesheet" href="{{ asset('css/app.css?v=' . time()) }}">
     <link rel="stylesheet" href="{{ asset('css/welcome.css?v=' . time()) }}">
 
@@ -18,8 +19,7 @@
 
     <!-- Main -->
     <main>
-
-
+        <!-- Mostrar mensaje de bienvenida -->
         @auth
             <h1>Bienvenido a TemuGram , {{ auth()->user()->name }}!</h1>
         @else

@@ -25,7 +25,6 @@
             <a href="{{ route('user.confirmDelete') }}" class="nav__button">Eliminar Cuenta</a>
 
             <!-- Imagen de perfil -->
-            <!-- Imagen de perfil -->
             <a class="header__logo" href="{{ route('post.index') }}">
                 <img class="header__icon"
                     src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('img/default.avif') }}"

@@ -12,6 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
+        // Crear la tabla de comentarios
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment');
